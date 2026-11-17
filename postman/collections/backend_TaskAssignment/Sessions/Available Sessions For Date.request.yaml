@@ -1,0 +1,23 @@
+$kind: http-request
+id: 49675473-30c12ac1-c7f4-43ce-8396-58a46f93ca3f
+name: Available Sessions For Date
+order: 2000
+method: GET
+url: '{{baseUrl}}/sessions/available?dateTimestamp=1749513600000'
+queryParams:
+  - key: dateTimestamp
+    value: '1749513600000'
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      pm.test("Only AVAILABLE sessions are returned", function () {
+        const sessions = pm.response.json().data;
+        sessions.forEach((session) => {
+          pm.expect(session.status).to.eql("AVAILABLE");
+        });
+      });
+    language: text/javascript

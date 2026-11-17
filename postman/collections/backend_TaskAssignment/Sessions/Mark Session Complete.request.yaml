@@ -1,0 +1,21 @@
+$kind: http-request
+id: 49675473-6af0786a-b642-47cc-8d90-ca180af28e1a
+name: Mark Session Complete
+order: 4000
+method: PATCH
+url: '{{baseUrl}}/sessions/{{sessionId}}/complete'
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      pm.test("Session status is COMPLETED", function () {
+        pm.expect(pm.response.json().data.status).to.eql("COMPLETED");
+      });
+
+      pm.test("completedAt is set", function () {
+        pm.expect(pm.response.json().data.completedAt).to.not.be.null;
+      });
+    language: text/javascript

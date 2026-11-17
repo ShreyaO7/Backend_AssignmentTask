@@ -1,6 +1,7 @@
 {
   "info": {
-    "name": "Session Booking Backend",
+    "name": "backend_TaskAssignment",
+    "description": "Session booking backend - Users book sessions with Teachers. Run requests top to bottom: Create Teacher -> Create User -> Create Session -> Available Sessions -> Book Session -> Mark Session Complete -> Get User Sessions.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -11,123 +12,239 @@
   ],
   "item": [
     {
-      "name": "Create User",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"fullName\": \"Shreya Ojha\",\n  \"email\": \"shreya@example.com\",\n  \"phone\": \"9876543210\"\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
-      },
-      "event": [
+      "name": "Teachers",
+      "item": [
         {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "if (pm.response.code === 201) {",
-              "  pm.collectionVariables.set('userId', pm.response.json().data._id);",
-              "}"
-            ]
+          "name": "Create Teacher",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 201) {",
+                  "  pm.collectionVariables.set(\"teacherId\", pm.response.json().data._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Amit Sharma\",\n  \"email\": \"amit+{{$timestamp}}@example.com\",\n  \"specialization\": \"Mathematics\",\n  \"experience\": 5\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/teachers", "host": ["{{baseUrl}}"], "path": ["teachers"] }
           }
         }
       ]
     },
     {
-      "name": "Create Teacher",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"fullName\": \"Amit Sharma\",\n  \"email\": \"amit@example.com\",\n  \"specialization\": \"Mathematics\",\n  \"experience\": 5\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/teachers", "host": ["{{baseUrl}}"], "path": ["teachers"] }
-      },
-      "event": [
+      "name": "Users",
+      "item": [
         {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "if (pm.response.code === 201) {",
-              "  pm.collectionVariables.set('teacherId', pm.response.json().data._id);",
-              "}"
-            ]
+          "name": "Create User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 201) {",
+                  "  pm.collectionVariables.set(\"userId\", pm.response.json().data._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Shreya Ojha\",\n  \"email\": \"shreya+{{$timestamp}}@example.com\",\n  \"phone\": \"9876543210\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
           }
         }
       ]
     },
     {
-      "name": "Create Session",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"teacherId\": \"{{teacherId}}\",\n  \"startTime\": \"2025-06-10T10:00:00.000Z\",\n  \"endTime\": \"2025-06-10T11:00:00.000Z\"\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/sessions", "host": ["{{baseUrl}}"], "path": ["sessions"] }
-      },
-      "event": [
+      "name": "Sessions",
+      "item": [
         {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "if (pm.response.code === 201) {",
-              "  pm.collectionVariables.set('sessionId', pm.response.json().data._id);",
-              "}"
-            ]
+          "name": "Create Session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Default status is AVAILABLE\", function () {",
+                  "  pm.expect(pm.response.json().data.status).to.eql(\"AVAILABLE\");",
+                  "});",
+                  "",
+                  "if (pm.response.code === 201) {",
+                  "  pm.collectionVariables.set(\"sessionId\", pm.response.json().data._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"teacherId\": \"{{teacherId}}\",\n  \"startTime\": \"2025-06-10T10:00:00.000Z\",\n  \"endTime\": \"2025-06-10T11:00:00.000Z\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/sessions", "host": ["{{baseUrl}}"], "path": ["sessions"] }
+          }
+        },
+        {
+          "name": "Available Sessions For Date",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Only AVAILABLE sessions are returned\", function () {",
+                  "  const sessions = pm.response.json().data;",
+                  "  sessions.forEach((session) => {",
+                  "    pm.expect(session.status).to.eql(\"AVAILABLE\");",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/sessions/available?dateTimestamp=1749513600000",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "available"],
+              "query": [{ "key": "dateTimestamp", "value": "1749513600000" }]
+            }
+          }
+        },
+        {
+          "name": "Book Session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Session status is BOOKED\", function () {",
+                  "  pm.expect(pm.response.json().data.status).to.eql(\"BOOKED\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"userId\": \"{{userId}}\"\n}" },
+            "url": {
+              "raw": "{{baseUrl}}/sessions/{{sessionId}}/book",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "{{sessionId}}", "book"]
+            }
+          }
+        },
+        {
+          "name": "Mark Session Complete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Session status is COMPLETED\", function () {",
+                  "  pm.expect(pm.response.json().data.status).to.eql(\"COMPLETED\");",
+                  "});",
+                  "",
+                  "pm.test(\"completedAt is set\", function () {",
+                  "  pm.expect(pm.response.json().data.completedAt).to.not.be.null;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{baseUrl}}/sessions/{{sessionId}}/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "{{sessionId}}", "complete"]
+            }
+          }
+        },
+        {
+          "name": "Get User Sessions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has upcoming and completed lists\", function () {",
+                  "  const data = pm.response.json().data;",
+                  "  pm.expect(data).to.have.property(\"upcoming\");",
+                  "  pm.expect(data).to.have.property(\"completed\");",
+                  "});",
+                  "",
+                  "pm.test(\"The booked-and-completed session shows up under completed\", function () {",
+                  "  const data = pm.response.json().data;",
+                  "  pm.expect(data.completed.some((s) => s._id === pm.collectionVariables.get(\"sessionId\"))).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/users/{{userId}}/sessions",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "{{userId}}", "sessions"]
+            }
           }
         }
       ]
-    },
-    {
-      "name": "Available Sessions For Date",
-      "request": {
-        "method": "GET",
-        "url": {
-          "raw": "{{baseUrl}}/sessions/available?dateTimestamp=1749513600000",
-          "host": ["{{baseUrl}}"],
-          "path": ["sessions", "available"],
-          "query": [{ "key": "dateTimestamp", "value": "1749513600000" }]
-        }
-      }
-    },
-    {
-      "name": "Book Session",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "body": { "mode": "raw", "raw": "{\n  \"userId\": \"{{userId}}\"\n}" },
-        "url": {
-          "raw": "{{baseUrl}}/sessions/{{sessionId}}/book",
-          "host": ["{{baseUrl}}"],
-          "path": ["sessions", "{{sessionId}}", "book"]
-        }
-      }
-    },
-    {
-      "name": "Mark Session Complete",
-      "request": {
-        "method": "PATCH",
-        "url": {
-          "raw": "{{baseUrl}}/sessions/{{sessionId}}/complete",
-          "host": ["{{baseUrl}}"],
-          "path": ["sessions", "{{sessionId}}", "complete"]
-        }
-      }
-    },
-    {
-      "name": "User Session List",
-      "request": {
-        "method": "GET",
-        "url": {
-          "raw": "{{baseUrl}}/users/{{userId}}/sessions",
-          "host": ["{{baseUrl}}"],
-          "path": ["users", "{{userId}}", "sessions"]
-        }
-      }
     }
   ]
 }

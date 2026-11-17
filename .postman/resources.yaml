@@ -1,0 +1,11 @@
+cloudResources:
+  collections:
+    ../postman/collections/backend_TaskAssignment: 49675473-af74645e-fb66-4de6-a5fd-c4feb9dcc7da
+    ../postman/collections/health care: 49675473-8d0ee8ab-402b-4671-b182-f296eb84bdf1
+    ../postman/collections/health: 49675473-5c99f9fc-c315-41f3-80a5-a461e5604223
+    ../postman/collections/node: 49675473-05edc6c1-3922-4937-b6aa-dede3149527b
+    ../postman/collections/socket: 6a4a24227ace9152a5317894
+  globals:
+    ../postman/globals/workspace.globals.yaml: 64b46699-76d8-48cb-8830-76de06452a15
+workspace:
+  id: 01b01ada-cd7b-4b26-985d-b48ed2b7731d

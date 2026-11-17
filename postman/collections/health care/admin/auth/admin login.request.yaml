@@ -1,0 +1,31 @@
+$kind: http-request
+url: https://health-backend-iyg3.onrender.com/admin/login
+method: POST
+queryParams:
+  - key: search
+    value: ""
+    disabled: true
+  - key: price_order
+    value: asc
+    disabled: true
+    description: asc
+  - key: brand
+    value: addidash
+    disabled: true
+  - key: rating
+    value: "0"
+    disabled: true
+  - key: category
+    value: sports
+    disabled: true
+body:
+  type: json
+  content: "{\r
+
+    \  \"email\": \"admin@gmail.com\",\r
+
+    \  \"password\": \"123456\"\r
+
+    }"
+settings: {}
+order: 4000

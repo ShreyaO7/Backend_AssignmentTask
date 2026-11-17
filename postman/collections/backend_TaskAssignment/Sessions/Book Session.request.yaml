@@ -1,0 +1,23 @@
+$kind: http-request
+id: 49675473-9cf1b105-503f-4ca4-9de2-7888d11f74f8
+name: Book Session
+order: 3000
+method: POST
+url: '{{baseUrl}}/sessions/{{sessionId}}/book'
+body:
+  type: json
+  content: '{"userId":"{{userId}}"}'
+headers:
+  - key: Content-Type
+    value: application/json
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      pm.test("Session status is BOOKED", function () {
+        pm.expect(pm.response.json().data.status).to.eql("BOOKED");
+      });
+    language: text/javascript

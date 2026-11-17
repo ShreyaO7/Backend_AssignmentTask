@@ -1,0 +1,24 @@
+$kind: http-request
+url: http://localhost:3000/admin/create-packages
+method: POST
+headers:
+  Authorization: "{{bearer_token_12lh}}"
+body:
+  type: json
+  content: "{\r
+
+    \       \"treatmentCategory\": \"Surguury\",\r
+
+    \        \"treatmentSubCategory\": \"Bypass\",\r
+
+    \        \"indiaPrice\": 10000,\r
+
+    \        \"singaporePrice\": 17000,\r
+
+    \        \"thailandPrice\": 10000,\r
+
+    \        \"turkeyPrice\": 12000\r
+
+    }"
+settings: {}
+order: 3000

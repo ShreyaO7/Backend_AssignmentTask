@@ -1,0 +1,34 @@
+$kind: http-request
+url: http://localhost:3001/admin//verify-otp
+method: POST
+headers:
+  - key: Authorization
+    value: Bearer {{supabase_service_role_api_key_0ho6}}
+    $type: |-
+      {
+        "type": "",
+        "format": "",
+        "required": false,
+        "deprecated": false,
+        "default": "",
+        "enum": [],
+        "pattern": "",
+        "minLength": "",
+        "maxLength": "",
+        "minItems": "",
+        "maxItems": "",
+        "minimum": "",
+        "maximum": "",
+        "uniqueItems": false
+      }
+body:
+  type: json
+  content: "{\r
+
+    \    \"email\": \"admin@gmail.com\",\r
+
+    \    \"otp\":  \"437655\"\r
+
+    }"
+settings: {}
+order: 2000

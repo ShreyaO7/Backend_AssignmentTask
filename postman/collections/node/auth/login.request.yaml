@@ -1,0 +1,20 @@
+$kind: http-request
+url: http://localhost:8080/api/v1/user/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Shreya Ojha1\",\r
+
+    \  \"email\": \"Shreya2@gmail.com\",\r
+
+    \  \"phone\": \"9876543213\",\r
+
+    \  \"password\": \"Shreya@123\",\r
+
+    \  \"role\": \"user\"\r
+
+    }"
+settings: {}
+order: 2000

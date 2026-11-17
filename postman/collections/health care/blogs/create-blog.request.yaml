@@ -1,0 +1,31 @@
+$kind: http-request
+url: http://localhost:3001/admin/create-blog
+method: POST
+headers:
+  Authorization: Bearer {{supabase_service_role_api_key_0rz3}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: treatmentCategory
+      value: cardiac
+    - type: text
+      key: treatmentSubCategory
+      value: coronary angiography
+    - type: text
+      key: author
+      value: peter park
+    - type: text
+      key: title
+      value: "diagnosis "
+    - type: text
+      key: description
+      value: qwertyuioiuytrewqwertyuioiuytrertyuioiuytrertyuiuytrertyu
+    - type: file
+      key: image
+      src: /C:/Users/hp/Pictures/Saved Pictures/medical_blog_banner_under_5mb.jpg
+    - type: text
+      key: status
+      value: ACTIVE
+settings: {}
+order: 1000

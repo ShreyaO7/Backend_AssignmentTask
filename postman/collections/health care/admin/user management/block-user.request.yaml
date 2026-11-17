@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://localhost:3000/admin//user/6a70dc8ca0faef958ec16b26/status
+method: PATCH
+headers:
+  Authorization: Bearer {{supabase_service_role_api_key_09ni}}
+body:
+  type: json
+  content: "{\r\n    \"isBlocked\": true\r\n}"
+settings: {}
+order: 3000

@@ -1,0 +1,27 @@
+$kind: http-request
+id: 49675473-f4782c16-6668-4de8-b3f0-73afc1074e29
+name: Create Session
+order: 1000
+method: POST
+url: '{{baseUrl}}/sessions'
+body:
+  type: json
+  content: '{"teacherId":"{{teacherId}}","startTime":"2025-06-10T10:00:00.000Z","endTime":"2025-06-10T11:00:00.000Z"}'
+headers:
+  - key: Content-Type
+    value: application/json
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 201", function () {
+        pm.response.to.have.status(201);
+      });
+
+      pm.test("Default status is AVAILABLE", function () {
+        pm.expect(pm.response.json().data.status).to.eql("AVAILABLE");
+      });
+
+      if (pm.response.code === 201) {
+        pm.collectionVariables.set("sessionId", pm.response.json().data._id);
+      }
+    language: text/javascript

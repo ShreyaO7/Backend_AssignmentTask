@@ -1,0 +1,45 @@
+$kind: http-request
+url: http://localhost:3000/user/register
+method: POST
+queryParams:
+  - key: search
+    value: ""
+    disabled: true
+  - key: price_order
+    value: asc
+    disabled: true
+    description: asc
+  - key: brand
+    value: addidash
+    disabled: true
+  - key: rating
+    value: "0"
+    disabled: true
+  - key: category
+    value: sports
+    disabled: true
+body:
+  type: json
+  content: "{\r
+
+    \  \"fullName\": \"Salim khan\",\r
+
+    \  \"email\": \"john@example.com\",\r
+
+    \  \"phoneNumber\": {\r
+
+    \    \"countryCode\": \"+91\",\r
+
+    \    \"phone\": \"9876543210\"\r
+
+    \  },\r
+
+    \  \"password\": \"123456\"\r
+
+    \r
+
+    \r
+
+    }"
+settings: {}
+order: 3000

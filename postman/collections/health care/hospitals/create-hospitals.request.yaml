@@ -1,0 +1,49 @@
+$kind: http-request
+url: http://localhost:3001/admin/create-hospital
+method: POST
+headers:
+  Authorization: Bearer {{json_web_token_0rz3}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: name
+      value: fortis
+    - type: text
+      key: type
+      value: MULTI_SPECIALTY
+    - type: text
+      key: city
+      value: delhi
+    - type: text
+      key: country
+      value: India
+    - type: text
+      key: beds
+      value: "1000"
+    - type: text
+      key: doctorsCount
+      value: "350"
+    - type: text
+      key: proceduresCount
+      value: "212"
+    - type: text
+      key: specialtiesCount
+      value: "11"
+    - type: text
+      key: establishedYear
+      value: "1983"
+    - type: text
+      key: status
+      value: ACTIVE
+    - type: text
+      key: description
+      value: " one of India's largest healthcare groups, known for multi-specialty treatment, advanced diagnostics, and patient-centric care across cardiology, neurology, and orthopedics."
+    - type: file
+      key: logo
+      src: /C:/Users/hp/Pictures/Saved Pictures/ChatGPT Image Aug 18, 2026, 12_12_34 PM.png
+    - type: file
+      key: banner
+      src: /C:/Users/hp/Pictures/Saved Pictures/ChatGPT Image Aug 18, 2026, 12_10_12 PM.png
+settings: {}
+order: 1000

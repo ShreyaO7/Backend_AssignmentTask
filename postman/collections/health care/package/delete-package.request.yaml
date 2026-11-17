@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://localhost:3000/admin/delete-packages/6a7ad7070d69fc132253a848
+method: DELETE
+headers:
+  Authorization: "{{bearer_token_12lh}}"
+body:
+  type: json
+  content: ""
+settings: {}
+order: 4000

@@ -1,0 +1,83 @@
+$kind: http-example
+request:
+  url: http://localhost:3000/admin/create-doctor
+  method: POST
+  headers:
+    Authorization: Bearer {{json_web_token_1dfg}}
+  body:
+    type: formdata
+    content:
+      - type: file
+        key: image
+        src: /C:/Users/hp/Pictures/Saved Pictures/igor-omilaev-X4S-G_Q9U9g-unsplash.jpg
+      - type: text
+        key: name
+        value: Dr. Rohan Mehta
+      - type: text
+        key: email
+        value: rohan.mehta111@gmail.com
+      - type: text
+        key: countryCode
+        value: "+91"
+      - type: text
+        key: phone
+        value: "9123456780"
+      - type: text
+        key: specialization
+        value: Orthopedics
+      - type: text
+        key: experience
+        value: "8"
+      - type: text
+        key: description
+        value: Senior orthopedic specialist with expertise in joint replacement, sports injuries, and fracture management.
+      - type: text
+        key: status
+        value: ACTIVE
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Security-Policy: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: cross-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Vary: Origin
+    x-request-id: e339bc15-cf1b-4e9d-bd0b-85a5cb9a8353
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "489"
+    ETag: W/"1e9-bcN4X+uStMoQclH28cUtDy3vhGM"
+    Date: Tue, 11 Aug 2026 12:40:11 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: text
+    content: |-
+      {
+          "success": true,
+          "data": {
+              "id": "6a7b182b237bf85c03cfb45c",
+              "name": "Dr. Rohan Mehta",
+              "email": "rohan.mehta111@gmail.com",
+              "phone": {
+                  "countryCode": "+91",
+                  "phone": "9123456780"
+              },
+              "specialization": "Orthopedics",
+              "experience": 8,
+              "status": "ACTIVE",
+              "image": "/uploads/doctors/1786452011079-471662222.jpg",
+              "description": "Senior orthopedic specialist with expertise in joint replacement, sports injuries, and fracture management.",
+              "createdAt": "2026-08-11T12:40:11.121Z",
+              "updatedAt": "2026-08-11T12:40:11.121Z"
+          }
+      }
+order: 1000

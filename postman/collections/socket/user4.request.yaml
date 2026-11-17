@@ -1,0 +1,13 @@
+$kind: socket.io-request
+description: ""
+url: http://localhost:8080
+events:
+  - name: receiveMessage
+    description: ""
+    subscribeOnConnect: false
+  - name: online_users
+    description: ""
+    subscribeOnConnect: true
+settings: {}
+messages: ./.resources/user4.resources/messages
+order: 4000

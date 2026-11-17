@@ -1,0 +1,39 @@
+$kind: http-request
+url: http://localhost:3001/admin/delete-blog/6a859d20c1fbad5bd31b8486
+method: DELETE
+headers:
+  Authorization: Bearer {{supabase_service_role_api_key_0rz3}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: treatmentCategory
+      value: cardiac
+      disabled: true
+    - type: text
+      key: treatmentSubCategory
+      value: coronary angiography
+      disabled: true
+    - type: text
+      key: author
+      value: peter park
+      disabled: true
+    - type: text
+      key: title
+      value: "diagnosis "
+      disabled: true
+    - type: text
+      key: description
+      value: qwertyuioiuytrewqwertyuioiuytrertyuioiuytrertyuiuytrertyu
+      disabled: true
+    - type: file
+      key: image
+      src: /C:/Users/hp/Pictures/Saved Pictures/medical_blog_banner_under_5mb.jpg
+      disabled: true
+    - type: text
+      key: status
+      value: ACTIVE
+      disabled: true
+settings: {}
+examples: ./.resources/delete blog.resources/examples
+order: 3000

@@ -1,0 +1,62 @@
+$kind: http-request
+url: http://localhost:3001/hospitals/get-hospitals
+method: GET
+headers:
+  Authorization: Bearer {{json_web_token_0rz3}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: name
+      value: fortis
+      disabled: true
+    - type: text
+      key: type
+      value: MULTI_SPECIALTY
+      disabled: true
+    - type: text
+      key: ""
+      value: delhi
+      disabled: true
+    - type: text
+      key: country
+      value: India
+      disabled: true
+    - type: text
+      key: beds
+      value: "1000"
+      disabled: true
+    - type: text
+      key: doctorsCount
+      value: "350"
+      disabled: true
+    - type: text
+      key: proceduresCount
+      value: "212"
+      disabled: true
+    - type: text
+      key: specialtiesCount
+      value: "11"
+      disabled: true
+    - type: text
+      key: establishedYear
+      value: "1983"
+      disabled: true
+    - type: text
+      key: status
+      value: ACTIVE
+      disabled: true
+    - type: text
+      key: description
+      value: " one of India's largest healthcare groups, known for multi-specialty treatment, advanced diagnostics, and patient-centric care across cardiology, neurology, and orthopedics."
+      disabled: true
+    - type: file
+      key: logo
+      src: /C:/Users/hp/Pictures/Saved Pictures/ChatGPT Image Aug 18, 2026, 12_12_34 PM.png
+      disabled: true
+    - type: file
+      key: banner
+      src: /C:/Users/hp/Pictures/Saved Pictures/ChatGPT Image Aug 18, 2026, 12_10_12 PM.png
+      disabled: true
+settings: {}
+order: 2000

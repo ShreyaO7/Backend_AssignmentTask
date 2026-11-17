@@ -1,0 +1,24 @@
+$kind: http-request
+id: 49675473-f8f983ab-4d06-44b3-9cb3-7d29d59eadad
+name: Get User Sessions
+order: 5000
+method: GET
+url: '{{baseUrl}}/users/{{userId}}/sessions'
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has upcoming and completed lists", function () {
+        const data = pm.response.json().data;
+        pm.expect(data).to.have.property("upcoming");
+        pm.expect(data).to.have.property("completed");
+      });
+
+      pm.test("The booked-and-completed session shows up under completed", function () {
+        const data = pm.response.json().data;
+        pm.expect(data.completed.some((s) => s._id === pm.collectionVariables.get("sessionId"))).to.be.true;
+      });
+    language: text/javascript

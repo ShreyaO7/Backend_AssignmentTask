@@ -1,0 +1,37 @@
+$kind: http-request
+url: http://localhost:3000/user/send-otp
+method: POST
+queryParams:
+  - key: search
+    value: ""
+    disabled: true
+  - key: price_order
+    value: asc
+    disabled: true
+    description: asc
+  - key: brand
+    value: addidash
+    disabled: true
+  - key: rating
+    value: "0"
+    disabled: true
+  - key: category
+    value: sports
+    disabled: true
+body:
+  type: json
+  content: "{\r
+
+    \    \"email\": \"john@example.com\",\r
+
+    \    \"phoneNumber\": {\r
+
+    \        \"countryCode\": \"+91\",\r
+
+    \        \"phone\": \"9876543210\"\r
+
+    \    }\r
+
+    }"
+settings: {}
+order: 1000

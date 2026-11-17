@@ -1,0 +1,58 @@
+$kind: http-example
+request:
+  url: http://localhost:3000/admin/enquiries/6a70e5ad82e292e0a9d6f075
+  method: DELETE
+  headers:
+    Authorization: "{{bearer_token_092e}}"
+  queryParams:
+    - key: search
+      value: ""
+      disabled: true
+    - key: price_order
+      value: asc
+      disabled: true
+      description: asc
+    - key: brand
+      value: addidash
+      disabled: true
+    - key: rating
+      value: "0"
+      disabled: true
+    - key: category
+      value: sports
+      disabled: true
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Vary: Origin
+    x-request-id: a95f6431-75c2-4621-beec-f989a6f15691
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "57"
+    ETag: W/"39-EmpLJ5lKUG7OvjY8XofovKS15VQ"
+    Date: Tue, 04 Aug 2026 06:44:50 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: text
+    content: |-
+      {
+          "success": true,
+          "message": "Enquiry deleted successfully"
+      }
+order: 1000

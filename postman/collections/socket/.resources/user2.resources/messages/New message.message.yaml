@@ -1,0 +1,7 @@
+$kind: socket.io-message
+eventName: user_online
+acknowledgement: false
+args:
+  - content: nyH2wJUZxJLpQ5tMAAAB
+    contentType: text
+order: 1000

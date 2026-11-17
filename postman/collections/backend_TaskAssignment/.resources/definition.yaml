@@ -1,0 +1,10 @@
+$kind: collection
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5000'
+  - key: teacherId
+    value: ''
+  - key: userId
+    value: ''
+  - key: sessionId
+    value: ''

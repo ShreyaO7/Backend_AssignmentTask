@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:3000/admin/enquiries/:id/status
+method: PATCH
+pathVariables:
+  id: 6a70e5ad82e292e0a9d6f075
+body:
+  type: json
+  content: '{ "status": "CLOSED" }   //PENDING | SEEN | CONNECTED | CLOSED'
+auth:
+  type: bearer
+  credentials:
+    token: "{{admin_token}}"
+settings: {}
+order: 2000

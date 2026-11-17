@@ -1,0 +1,38 @@
+$kind: http-request
+url: http://localhost:3000/user/get-Enquiries
+method: GET
+headers:
+  Authorization: Bearer {{json_web_token_1d9q}}
+queryParams:
+  - key: search
+    value: ""
+    disabled: true
+  - key: price_order
+    value: asc
+    disabled: true
+    description: asc
+  - key: brand
+    value: addidash
+    disabled: true
+  - key: rating
+    value: "0"
+    disabled: true
+  - key: category
+    value: sports
+    disabled: true
+body:
+  type: json
+  content: "{\r
+
+    \  \"patientName\": \"John Doe\",\r
+
+    \  \"patientEmail\": \"john@example.com\",\r
+
+    \  \"patientPhone\": { \"countryCode\": \"+91\", \"phone\": \"9876543210\" },\r
+
+    \  \"patientMessage\": \"I need an appointment\"\r
+
+    }"
+settings: {}
+examples: ./.resources/get user enquiry.resources/examples
+order: 2000

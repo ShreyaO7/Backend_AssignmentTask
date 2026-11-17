@@ -1,0 +1,8 @@
+$kind: http-request
+url: http://localhost:3000/admin/get-doctors-list
+method: GET
+headers:
+  Authorization: Bearer {{json_web_token_1dfg}}
+settings: {}
+examples: ./.resources/create-doctor.resources/examples
+order: 2000

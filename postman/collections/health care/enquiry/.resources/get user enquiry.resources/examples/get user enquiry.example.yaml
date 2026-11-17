@@ -1,0 +1,85 @@
+$kind: http-example
+request:
+  url: http://localhost:3000/user/get-Enquiries
+  method: GET
+  headers:
+    Authorization: Bearer {{json_web_token_1d9q}}
+  queryParams:
+    - key: search
+      value: ""
+      disabled: true
+    - key: price_order
+      value: asc
+      disabled: true
+      description: asc
+    - key: brand
+      value: addidash
+      disabled: true
+    - key: rating
+      value: "0"
+      disabled: true
+    - key: category
+      value: sports
+      disabled: true
+  body:
+    type: json
+    content: "{\r
+
+      \  \"patientName\": \"John Doe\",\r
+
+      \  \"patientEmail\": \"john@example.com\",\r
+
+      \  \"patientPhone\": { \"countryCode\": \"+91\", \"phone\": \"9876543210\" },\r
+
+      \  \"patientMessage\": \"I need an appointment\"\r
+
+      }"
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Vary: Origin
+    x-request-id: 88025e93-2cc2-434f-ba4d-826d99ba0819
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "397"
+    ETag: W/"18d-vdIrOvMR6GumRy4BJrMs1kBKpQs"
+    Date: Fri, 07 Aug 2026 07:23:02 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: text
+    content: |-
+      {
+          "success": true,
+          "message": "Enquiries fetched successfully",
+          "enquiries": [
+              {
+                  "_id": "6a73587c2b40ee0e55d9d25c",
+                  "patientName": "John Doe",
+                  "patientEmail": "john@example.com",
+                  "patientPhone": {
+                      "countryCode": "+91",
+                      "phone": "9876543210"
+                  },
+                  "patientMessage": "I need an appointment",
+                  "status": "PENDING",
+                  "createdAt": "2026-08-05T15:36:28.718Z",
+                  "updatedAt": "2026-08-05T15:36:28.718Z",
+                  "enquiryNumber": "ENQ-001",
+                  "__v": 0
+              }
+          ]
+      }
+order: 1000

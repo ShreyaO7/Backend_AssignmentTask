@@ -1,0 +1,35 @@
+$kind: http-request
+url: http://localhost:3000/enquiry/
+method: POST
+queryParams:
+  - key: search
+    value: ""
+    disabled: true
+  - key: price_order
+    value: asc
+    disabled: true
+    description: asc
+  - key: brand
+    value: addidash
+    disabled: true
+  - key: rating
+    value: "0"
+    disabled: true
+  - key: category
+    value: sports
+    disabled: true
+body:
+  type: json
+  content: "{\r
+
+    \  \"patientName\": \"John Doe\",\r
+
+    \  \"patientEmail\": \"john@example.com\",\r
+
+    \  \"patientPhone\": { \"countryCode\": \"+91\", \"phone\": \"9876543210\" },\r
+
+    \  \"patientMessage\": \"I need an appointment\"\r
+
+    }"
+settings: {}
+order: 1000

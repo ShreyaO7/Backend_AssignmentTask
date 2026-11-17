@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://localhost:3000/admin/enquiries?search&fromDate=04/08/2026&toDate=01/08/2026&page =1&limit=10&status
+method: GET
+queryParams:
+  - key: search
+    value: null
+  - key: fromDate
+    value: 04/08/2026
+  - key: toDate
+    value: 01/08/2026
+  - key: "page "
+    value: "1"
+  - key: limit
+    value: "10"
+  - key: status
+    value: null
+    description: PENDING'|'SEEN'|CONNECTED' CLOSED'
+auth:
+  type: bearer
+  credentials:
+    token: "{{admin_token}}"
+settings: {}
+order: 1000
