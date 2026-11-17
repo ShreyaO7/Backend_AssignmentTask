@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Session Booking Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "teacherId", "value": "" },
+    { "key": "userId", "value": "" },
+    { "key": "sessionId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Shreya Ojha\",\n  \"email\": \"shreya@example.com\",\n  \"phone\": \"9876543210\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 201) {",
+              "  pm.collectionVariables.set('userId', pm.response.json().data._id);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Teacher",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Amit Sharma\",\n  \"email\": \"amit@example.com\",\n  \"specialization\": \"Mathematics\",\n  \"experience\": 5\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/teachers", "host": ["{{baseUrl}}"], "path": ["teachers"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 201) {",
+              "  pm.collectionVariables.set('teacherId', pm.response.json().data._id);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Session",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"teacherId\": \"{{teacherId}}\",\n  \"startTime\": \"2025-06-10T10:00:00.000Z\",\n  \"endTime\": \"2025-06-10T11:00:00.000Z\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/sessions", "host": ["{{baseUrl}}"], "path": ["sessions"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 201) {",
+              "  pm.collectionVariables.set('sessionId', pm.response.json().data._id);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Available Sessions For Date",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/sessions/available?dateTimestamp=1749513600000",
+          "host": ["{{baseUrl}}"],
+          "path": ["sessions", "available"],
+          "query": [{ "key": "dateTimestamp", "value": "1749513600000" }]
+        }
+      }
+    },
+    {
+      "name": "Book Session",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"userId\": \"{{userId}}\"\n}" },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/{{sessionId}}/book",
+          "host": ["{{baseUrl}}"],
+          "path": ["sessions", "{{sessionId}}", "book"]
+        }
+      }
+    },
+    {
+      "name": "Mark Session Complete",
+      "request": {
+        "method": "PATCH",
+        "url": {
+          "raw": "{{baseUrl}}/sessions/{{sessionId}}/complete",
+          "host": ["{{baseUrl}}"],
+          "path": ["sessions", "{{sessionId}}", "complete"]
+        }
+      }
+    },
+    {
+      "name": "User Session List",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/users/{{userId}}/sessions",
+          "host": ["{{baseUrl}}"],
+          "path": ["users", "{{userId}}", "sessions"]
+        }
+      }
+    }
+  ]
+}
